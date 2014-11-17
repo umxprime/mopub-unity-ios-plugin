@@ -46,7 +46,8 @@ UIViewController *UnityGetGLViewController();
 	CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
 	CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
 	
-	if( UIInterfaceOrientationIsLandscape( UnityGetGLViewController().interfaceOrientation ) )
+    if (UIInterfaceOrientationIsLandscape( UnityGetGLViewController().interfaceOrientation ) &&
+	[[[UIDevice currentDevice] systemVersion] floatValue] < 8.0) // screen bounds swap not needed on iOS > 8
 	{
 		screenWidth = screenHeight;
 		screenHeight = [UIScreen mainScreen].bounds.size.width;
